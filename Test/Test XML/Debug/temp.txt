@@ -1,0 +1,88 @@
+<animation>
+	<step>
+		<automaton name="a1" first_state="a">
+			<states>
+				<state>a</state>
+				<state>b</state>
+				<state>c</state>
+				<state>d</state>
+			</states>
+			<final_states>
+				<state>a</state>
+				<state>b</state>
+			</final_states>
+			<links>
+				<link from="a" to="b" symbol="0"/>
+				<link from="b" to="b" symbol="1"/>
+				<link from="b" to="c" symbol="0"/>
+				<link from="c" to="a" symbol="1"/>
+			</links>
+		</automaton>
+		<actions>
+			<action name="add_state" state_name="a1.e"/>
+			<action name="add_first_state" state_name="a1.f"/>
+			<action name="add_link" state_from="a1.e" state_to="a1.a" symbol="1"/>
+			<action name="make_finale" state_name="a1.e"/>
+			<action name="make_unfinale" state_name="a1.e"/>
+			<action name="make_unfirst" state_name="a1.a"/>
+		</actions>
+	</step>
+	<step>
+		<automaton name="a1" first_state="a">
+			<states>
+				<state>a</state>
+				<state>b</state>
+				<state>c</state>
+				<state>d</state>
+			</states>
+			<final_states>
+				<state>a</state>
+				<state>b</state>
+			</final_states>
+			<links>
+				<link from="a" to="b" symbol="0"/>
+				<link from="b" to="b" symbol="1"/>
+				<link from="b" to="c" symbol="0"/>
+				<link from="c" to="a" symbol="1"/>
+			</links>
+		</automaton>
+		<automaton name="a2" first_state="f">
+			<states>
+				<state>e</state>
+				<state>f</state>
+				<state>g</state>
+				<state>h</state>
+			</states>
+			<final_states>
+				<state>g</state>
+				<state>h</state>
+			</final_states>
+			<links>
+				<link from="e" to="f" symbol="0"/>
+				<link from="f" to="f" symbol="1"/>
+				<link from="f" to="g" symbol="0"/>
+				<link from="g" to="e" symbol="1"/>
+			</links>
+		</automaton>
+		<actions>
+			<action name="alternative">
+				<action name="add_fisrt_state" state_name="new.j"/>
+				<action name="add_automaton">
+					<automaton name="new" first_state="j"/>
+				</action>
+				<action name="add_link" state_from="new.j" state_to="a1.b" symbol="0"/>
+				<action name="add_link" state_from="new.f" state_to="a2.b" symbol="0"/>
+				<action name="make_unfirst" state_name="a1.a"/>
+				<action name="make_unfirst" state_name="a2.a"/>
+				<action name="make_finale" state_name="new.f"/>
+				<action name="combine_automaton" to="new">
+					<automaton name="a1"/>
+					<automaton name="a2"/>
+				</action>
+			</action>
+			<action name="concatenation" automaton="a1" state_name="e"/>
+			<action name="iteration"/>
+		</actions>
+	</step>
+</animation>
+

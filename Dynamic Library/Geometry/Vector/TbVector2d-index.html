@@ -1,0 +1,185 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+* {
+	/*font: 14pt 'Times new Roman';*/
+	
+}
+</style>
+<title>DOC</title>
+</head>
+<body>
+	<center>
+		<a href="../../../index.html"><h1>Документація</h1></a>
+		<hr>
+		<h3>namespace: dynlib</h3>
+		<h2>
+			class <a href="TbVector2d.h">TbVector2d</a>
+		</h2>
+		<!------------------------------------- ОПИС КЛАСУ ------------------------------------->
+		<p>Клас призначений для зберігання значень вектора на площині
+			(його координат).</p>
+		<table border="1" cellpadding="5" cellspacing="0" bordercolor="#AAA">
+			<!------------------------------------- ПОЛЯ ------------------------------------->
+			<tr>
+				<th colspan="5"><h3>Поля</h3></th>
+			</tr>
+			<tr>
+				<th>Доступ</th>
+				<th colspan="2">Тип</th>
+				<th colspan="1">Назва</th>
+				<th>Опис</th>
+			</tr>
+			<!------------------------------------- private ------------------------------------->
+			<tr>
+				<td rowspan="2">private</td>
+				<td rowspan="2" colspan="2">double</td>
+				<td>x</td>
+				<td>x - координата на площині.</td>
+			</tr>
+			<tr>
+				<td>y</td>
+				<td>y - координата на площині.</td>
+			</tr>
+			<!------------------------------------- КОНСТРУКТОРИ ------------------------------------->
+			<tr>
+				<th colspan="5"><h3>Конструктори</h3> </a></th>
+			</tr>
+			<tr>
+				<th colspan="4">Прототип</th>
+				<th>Опис</th>
+			</tr>
+			<!------------------------------------- public ------------------------------------->
+			<tr>
+				<td rowspan="2">public</td>
+				<td colspan="3">TbVector2d()</td>
+				<td>Зануляє координати.</td>
+			</tr>
+			<tr>
+				<td colspan="3">TbVector2d(const double &x, const double &y)</td>
+				<td>Присвоює координатам координати з параметрів.</td>
+			</tr>
+			<!------------------------------------- ДЕСТРУКТОР ------------------------------------->
+			<tr>
+				<th colspan="5"><h3>Деструктор</h3></th>
+			</tr>
+			<tr>
+				<th colspan="4">Прототип</th>
+				<th>Опис</th>
+			</tr>
+			<tr>
+				<td>public</td>
+				<td>virtual</td>
+				<td colspan="2">~TbVector2d()</td>
+				<td></td>
+			</tr>
+			<!------------------------------------- МЕТОДИ ------------------------------------->
+			<tr>
+				<th colspan="5"><h3>Методи</h3></th>
+			</tr>
+			<tr>
+				<th colspan="4">Прототип</th>
+				<th>Опис</th>
+			</tr>
+			<!------------------------------------- public ------------------------------------->
+			<tr>
+				<td rowspan="18">public</td>
+				<td rowspan="18"></td>
+				<td rowspan="1" colspan="1">bool</td>
+				<td>equal(const <a href="TbVector2d-index.html">TbVector2d</a> *v)const
+				</td>
+				<td>Порівнює два вектори. Два вектори рівні, якщо відповідні
+					координати рівні. Якщо вектори рівні, повертає true, інакше false.</td>
+			</tr>
+			<tr>
+				<td rowspan="8" colspan="1">double</td>
+				<td>getX()const</td>
+				<td>Повертає координату x.</td>
+			</tr>
+			<tr>
+				<td>getY()const</td>
+				<td>Повертає координату y.</td>
+			</tr>
+			<tr>
+				<td>getLength()const</td>
+				<td>Повертає довжину вектора (відстань від початку координат
+					(0; 0) до даного вектора (до точки (x; y))).</td>
+			</tr>
+			<tr>
+				<td>scalar(const <a href="TbVector2d-index.html">TbVector2d</a> *v)const
+				</td>
+				<td>Повертає скалярний добуток двох векторів (даного та v).</td>
+			</tr>
+			<tr>
+				<td>getSignedRadian()const</td>
+				<td>Повертає кут в радіанах між променем, що утворює вектор та
+					додатньою віссю ox у межах [-pi; pi].</td>
+			</tr>
+			<tr>
+				<td>getRadian()const</td>
+				<td>Повертає кут в радіанах між променем, що утворює вектор та
+					додатньою віссю ox у межах [0; 2 * pi].</td>
+			</tr>
+			<tr>
+				<td>getSignedRadianBetween(const <a href="TbVector2d-index.html">TbVector2d</a>
+					*v)const
+				</td>
+				<td>Повертає кут в радіанах між променем, що утворює вектор та
+					променем, що утворює вектор v у межах [-pi / 2; pi / 2].</td>
+			</tr>
+			<tr>
+				<td>getRadianBetween(const <a href="TbVector2d-index.html">TbVector2d</a>
+					*v)const
+				</td>
+				<td>Повертає кут в радіанах між променем, що утворює вектор та
+					променем, що утворює вектор v у межах [0; pi].</td>
+			</tr>
+
+			<tr>
+				<td rowspan="9" colspan="1">void</td>
+				<td>setX(const double &x)</td>
+				<td>Встановлює координату x.</td>
+			</tr>
+			<tr>
+				<td>setY(const double &y)</td>
+				<td>Встановлює координату y.</td>
+			</tr>
+			<tr>
+				<td>coordinate(const double &x, const double &y)</td>
+				<td>Встановлює координати x та y.</td>
+			</tr>
+			<tr>
+				<td>shift(const <a href="TbVector2d-index.html">TbVector2d</a> *dv)
+				</td>
+				<td>Зсуває вектор на вектор dv, якщо dv не NULL.</td>
+			</tr>
+			<tr>
+				<td>reverse()</td>
+				<td>Повертає вектор на 180 градуів. Одержується вектор (-x;
+					-y).</td>
+			</tr>
+			<tr>
+				<td>normalize()</td>
+				<td>Нормалізує вектор, встановлює його довжину в 1, якщо його
+					поточна довжина >0.</td>
+			</tr>
+			<tr>
+				<td>setLength(const double &newLength)</td>
+				<td>Встановлює довжину вектора в newLength, якщо його поточна
+					довжина >0.</td>
+			</tr>
+			<tr>
+				<td>mult(const double &d)</td>
+				<td>Множить вектор на число d. Одержується вектор (d * x; d *
+					y).</td>
+			</tr>
+			<tr>
+				<td>rotate(const double &radian)</td>
+				<td>Повертає вектор на кут, що рівний radian.</td>
+			</tr>
+		</table>
+		<br> Автор: Лимаренко Дмитро. 2015р
+	</center>
+</body>
+</html>
