@@ -19,22 +19,24 @@ namespace dynlib
 #include "TbGroupState.h"
 #include <vcl.h>
 #include "TbAName.h"
+#include "TbIdentificatable.h"
 //---------------------------------------------------------------------------
 namespace dynlib
 {
 	namespace automaton
 	{
-		class TbState: public TbAPoint2d
+		class TbState: public TbAPoint2d, public TbIdentificatable
 		{
 			private:
 				map<TbState*, TbLink*> links; // TbState* - ref, TbLink* - value
 				TbGoing *going; // value
 				TbGroupState *group;
 				bool finaleState;
-				int nameId;
+				int id;
 			private:
 				TbLink* getLink(TbState *stateTo);
 			public:
+				TbState() {}
 				TbState(TbGroupState *group, const int &nameId);
 
 				void addLink(TbState *stateTo, const wchar_t &symbol);
@@ -44,6 +46,7 @@ namespace dynlib
 				void paintLinks(TCanvas *canvas);
 				void makeFinale();
 				void setGroup(TbGroupState *group);
+				void setId(const int &id);
 
 				TbGoing* getGoing()const;
 

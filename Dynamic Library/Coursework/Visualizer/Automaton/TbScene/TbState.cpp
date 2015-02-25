@@ -10,7 +10,7 @@ namespace dynlib
 		TbState::TbState(TbGroupState *group, const int &nameId)
 		{
 			this->group = group;
-			this->nameId = nameId;
+			this->id = nameId;
 		}
 
 		void TbState::addLink(TbState *stateTo, const wchar_t &symbol)
@@ -47,7 +47,7 @@ namespace dynlib
 
 		int TbState::getNameId()const
 		{
-         	return nameId;
+         	return id;
 		}
 
 		void TbState::setGoing(TbGoing *going)
@@ -79,7 +79,7 @@ namespace dynlib
 			double right = x + 10;
 			double bottom = y + 10;
 			canvas->Ellipse(left, top, right, bottom);
-			String name = stateName->getNameById(nameId);
+			String name = stateName->getNameById(id);
 			int tleft = canvas->TextWidth(name) / 2;
 			int ttop = canvas->TextHeight(name) / 2;
 			canvas->TextOutA(x - tleft, y - ttop, name);
@@ -95,6 +95,11 @@ namespace dynlib
 				it->second->paint(canvas);
             }
 		}
+
+		void TbState::setId(const int &id)
+		{
+        	this->id = id;
+        }
 
 		void TbState::makeFinale()
 		{
