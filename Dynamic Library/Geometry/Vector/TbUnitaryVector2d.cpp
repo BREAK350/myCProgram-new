@@ -11,23 +11,6 @@ namespace dynlib
     	radian = 0;
 	}
 
-	TbUnitaryVector2d::TbUnitaryVector2d(const double &radian)
-	{
-    	setRadian(radian);
-	}
-
-	TbUnitaryVector2d::TbUnitaryVector2d(const TbAVector2d *rv)
-	{
-		if(rv)
-		{
-			setRadian(rv->getRadian());
-		}
-		else
-		{
-			radian = 0;
-		}
-    }
-
 	TbUnitaryVector2d::~TbUnitaryVector2d()
 	{
 
@@ -106,9 +89,11 @@ namespace dynlib
         }
 	}
 
-	TbVector2d* TbUnitaryVector2d::getTbVector2d()
+	TbVector2d* TbUnitaryVector2d::getTbVector2d_()
 	{
-		return new TbVector2d(getX(), getY());
+		TbVector2d *v_ = new TbVector2d();
+		v_->coordinate(getX(), getY());
+		return v_;
     }
 }
 //---------------------------------------------------------------------------

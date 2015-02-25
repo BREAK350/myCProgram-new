@@ -24,8 +24,6 @@ namespace dynlib
 			double y;
 		public:
 			TbPoint2d();
-			TbPoint2d(const TbAPoint2d *point);
-			TbPoint2d(const double &x, const double &y);
 			virtual ~TbPoint2d();
 
 			virtual double getDistanceTo(const TbAPoint2d *point);
@@ -50,22 +48,22 @@ namespace dynlib
 			/**
 
 			*/
-			static TbPoint2d* getMiddlePoint(const TbAPoint2d *p1,
+			static TbPoint2d* getMiddlePoint_(const TbAPoint2d *p1,
 				const TbAPoint2d *p2);
 			/**
 
 			*/
-			static TbPoint2d* getMiddlePoint(const TbAPoint2d *p1,
+			static TbPoint2d* getMiddlePoint_(const TbAPoint2d *p1,
 				const double &weight1, const TbAPoint2d *p2, const double &weight2);
 			/**
 
 			*/
-			static TbPoint2d* getMiddlePoint(const double &x1, const double &y1,
+			static TbPoint2d* getMiddlePoint_(const double &x1, const double &y1,
 				const double &x2, const double &y2);
 			/**
 
 			*/
-			static TbPoint2d* getMiddlePoint(const double &x1, const double &y1,
+			static TbPoint2d* getMiddlePoint_(const double &x1, const double &y1,
 				const double &weight1, const double &x2, const double &y2,
 				const double &weight2);
 

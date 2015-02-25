@@ -9,41 +9,33 @@ namespace dynlib // TbVector2d
 	{
 	}
 
-	TbVector2d::TbVector2d(const TbAPoint2d *point)
-		:TbPoint2d(point)
-	{
-    }
-
-	TbVector2d::TbVector2d(const double &x, const double &y)
-		:TbPoint2d(x, y)
-	{
-	}
-
-	TbVector2d::TbVector2d(const TbAPoint2d *from,
+	TbVector2d* TbVector2d::instance_(const TbAPoint2d *from,
 		const TbAPoint2d *to)
 	{
+		TbVector2d *v_ = new TbVector2d();
 		if(to)
 		{
 			if(from)
 			{
-				coordinate(to->getX() - from->getX(), to->getY() - from->getY());
+				v_->coordinate(to->getX() - from->getX(), to->getY() - from->getY());
 			}
 			else
 			{
-				coordinate(to->getX(), to->getY());
+				v_->coordinate(to->getX(), to->getY());
 			}
 		}
 		else
 		{
 			if(from)
 			{
-				coordinate(-from->getX(), -from->getY());
+				v_->coordinate(-from->getX(), -from->getY());
 			}
 			else
 			{
-            	coordinate(0, 0);
+				v_->coordinate(0, 0);
 			}
 		}
+		return v_;
 	}
 
 	void TbVector2d::shift(const TbAVector2d *dv)
@@ -143,9 +135,11 @@ namespace dynlib // TbVector2d
 
 	}
 
-	TbUnitaryVector2d* TbVector2d::getUnitaryVector()const
+	TbUnitaryVector2d* TbVector2d::getUnitaryVector_()const
 	{
-		return new TbUnitaryVector2d(getRadian());
+		TbUnitaryVector2d *uv_ = new TbUnitaryVector2d();
+		uv_->setRadian(getRadian());
+		return uv_;
     }
 }
 //---------------------------------------------------------------------------

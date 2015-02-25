@@ -20,12 +20,9 @@ namespace dynlib // Dynamic Library
 	{
 		public:
 			TbVector2d();
-			TbVector2d(const TbAPoint2d *point);
-			TbVector2d(const double &x, const double &y);
-			TbVector2d(const TbAPoint2d *from, const TbAPoint2d *to);
             virtual ~TbVector2d();
 
-			virtual TbUnitaryVector2d* getUnitaryVector()const;
+			virtual TbUnitaryVector2d* getUnitaryVector_()const;
 
 			virtual double getX()const;
 			virtual double getY()const;
@@ -42,6 +39,9 @@ namespace dynlib // Dynamic Library
 			virtual void setRadian(const double &sin_radian, const double &cos_radian);
 			virtual void shift(const TbAVector2d *dv);
 			virtual void shift(const double &dx, const double &dy);
+
+			static TbVector2d* instance_(const TbAPoint2d *from,
+				const TbAPoint2d *to);
     };
 }
 //---------------------------------------------------------------------------

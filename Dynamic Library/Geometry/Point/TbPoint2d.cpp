@@ -10,23 +10,6 @@ namespace dynlib // TbPoint2d
 		coordinate(0, 0);
 	}
 
-	TbPoint2d::TbPoint2d(const TbAPoint2d *point)
-	{
-		if(point)
-		{
-			coordinate(point->getX(), point->getY());
-		}
-		else
-		{
-			coordinate(0, 0);
-        }
-    }
-
-	TbPoint2d::TbPoint2d(const double &x, const double &y)
-	{
-		coordinate(x, y);
-	}
-
 	TbPoint2d::~TbPoint2d()
 	{
 	}
@@ -111,44 +94,47 @@ namespace dynlib // TbPoint2d
 		return TbAPoint2d::getQuarter(this, point);
 	}
 
-	TbPoint2d* TbPoint2d::getMiddlePoint(const TbAPoint2d *p1,
+	TbPoint2d* TbPoint2d::getMiddlePoint_(const TbAPoint2d *p1,
 				const TbAPoint2d *p2)
 	{
 		double x1 = (p1 ? p1->getX() : 0);
 		double y1 = (p1 ? p1->getY() : 0);
 		double x2 = (p2 ? p2->getX() : 0);
 		double y2 = (p2 ? p2->getY() : 0);
-		return getMiddlePoint(x1, y1, x2, y2);
+		return getMiddlePoint_(x1, y1, x2, y2);
 	}
 
-	TbPoint2d* TbPoint2d::getMiddlePoint(const double &x1, const double &y1,
+	TbPoint2d* TbPoint2d::getMiddlePoint_(const double &x1, const double &y1,
 				const double &x2, const double &y2)
 	{
-		return new TbPoint2d((x1 + x2) / 2, (y1 + y2) / 2);
+		TbPoint2d *p_ = new TbPoint2d();
+		p_->coordinate((x1 + x2) / 2, (y1 + y2) / 2);
+		return p_;
 	}
 
-	TbPoint2d* TbPoint2d::getMiddlePoint(const double &x1, const double &y1,
+	TbPoint2d* TbPoint2d::getMiddlePoint_(const double &x1, const double &y1,
 				const double &weight1, const double &x2, const double &y2,
 				const double &weight2)
 	{
-		TbPoint2d *point = NULL;
+		TbPoint2d *p_ = NULL;
 		if(weight1 > 0 && weight2 > 0)
 		{
+			p_ = new TbPoint2d();
 			double weight = weight1 + weight2;
-			point = new TbPoint2d((x1 + x2) * weight1 / weight,
+			p_->coordinate((x1 + x2) * weight1 / weight,
 				(y1 + y2) * weight1 / weight);
 		}
-		return point;
+		return p_;
 	}
 
-	TbPoint2d* TbPoint2d::getMiddlePoint(const TbAPoint2d *p1,
+	TbPoint2d* TbPoint2d::getMiddlePoint_(const TbAPoint2d *p1,
 				const double &weight1, const TbAPoint2d *p2, const double &weight2)
 	{
 		double x1 = (p1 ? p1->getX() : 0);
 		double y1 = (p1 ? p1->getY() : 0);
 		double x2 = (p2 ? p2->getX() : 0);
 		double y2 = (p2 ? p2->getY() : 0);
-		return getMiddlePoint(x1, y1, weight1, x2, y2, weight2);
+		return getMiddlePoint_(x1, y1, weight1, x2, y2, weight2);
 	}
 }
 //---------------------------------------------------------------------------

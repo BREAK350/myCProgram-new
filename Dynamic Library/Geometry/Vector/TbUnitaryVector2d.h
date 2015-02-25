@@ -20,11 +20,9 @@ namespace dynlib
 			double radian;
 		public:
 			TbUnitaryVector2d();
-			TbUnitaryVector2d(const double &radian);
-			TbUnitaryVector2d(const TbAVector2d *rv);
 			virtual ~TbUnitaryVector2d();
 
-			virtual TbVector2d* getTbVector2d();
+			virtual TbVector2d* getTbVector2d_();
 
 			virtual double getX()const;
 			virtual double getY()const;
