@@ -54,11 +54,11 @@ namespace dynlib
 			}
 			else
 			{
-				TbVector2d *link = new TbVector2d(from, to);
-				link->setLength(length - 10);
-				link->shift(from->getX(), from->getY());
-				canvas->LineTo(link->getX(), link->getY());
-				delete link;
+				TbVector2d *link_ = TbVector2d::instance_(from, to);
+				link_->setLength(length - 10);
+				link_->shift(from->getX(), from->getY());
+				canvas->LineTo(link_->getX(), link_->getY());
+				delete link_;
 			}
         }
     }

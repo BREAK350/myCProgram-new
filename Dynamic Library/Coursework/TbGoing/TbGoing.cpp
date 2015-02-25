@@ -41,7 +41,7 @@ namespace dynlib // TbGoing
 		double speed = speedable->getSpeed();
 		if(speed > 0)
 		{
-			TbVector2d *dir = new TbVector2d((TbPoint2d*)position, station);
+			TbVector2d *dir = TbVector2d::instance_((TbPoint2d*)position, station);
 			if(dir->getLength() > speed)
 			{
 				dir->setLength(speed);

@@ -58,7 +58,7 @@ namespace dynlib
 				void removeLinkTo(TbState *state);
 				void removeState(TbState *state);
 				void removeStateWithoutResizable(const int &stateId);
-				TbPoint2d* getBeginStation(const TbAPoint2d *center)const;
+				TbPoint2d* getBeginStation_(const TbAPoint2d *center)const;
 			public:
 				TbScene();
 				~TbScene();

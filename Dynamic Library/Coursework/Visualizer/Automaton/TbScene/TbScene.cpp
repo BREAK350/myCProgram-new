@@ -25,7 +25,7 @@ namespace dynlib
 		TbGoing* TbScene::generateGoing(const TbAPoint2d *center)const
 		{
         	TbGoing *going = new TbGoing();
-			TbPoint2d *station = getBeginStation(center);
+			TbPoint2d *station = getBeginStation_(center);
 			TbVector2d *position = new TbVector2d();
 			TbEvenSpeedable *speed = new TbEvenSpeedable();
 			speed->setSpeed(2);
@@ -195,9 +195,9 @@ namespace dynlib
 				{
 					fromGroup->removeState(state);
 					toGroup->addState(state);
-					TbVector2d *shift = new TbVector2d(toGroup, fromGroup);
-					state->getGoing()->getPosition()->shift(shift);
-					delete shift;
+					TbVector2d *shift_ = TbVector2d::instance_(toGroup, fromGroup);
+					state->getGoing()->getPosition()->shift(shift_);
+					delete shift_;
 					statesInGroup[state] = toGroup;
 					resize();
 					return 1;
@@ -326,9 +326,9 @@ namespace dynlib
 			this->startPosition = startPosition;
 		}
 
-		TbPoint2d* TbScene::getBeginStation(const TbAPoint2d *center)const
+		TbPoint2d* TbScene::getBeginStation_(const TbAPoint2d *center)const
 		{
-        	return new TbVector2d(center, startPosition);
+        	return TbVector2d::instance_(center, startPosition);
         }
 	}
 }
